@@ -3,8 +3,6 @@ from flask import request
 from flask_cors import CORS, cross_origin
 import os
 
-import sys
-
 from services.home_activities import *
 from services.notifications_activities import *
 from services.user_activities import *
@@ -73,8 +71,6 @@ tracer = trace.get_tracer(__name__)
 
 # Initialize automatic instrumentation with Flask
 app = Flask(__name__)
-
-
 
 # XRay
 # XRayMiddleware(app, xray_recorder)
@@ -163,6 +159,7 @@ def data_create_message():
 
 @app.route("/api/activities/home", methods=['GET'])
 def data_home():
+  # app.logger.debug(request.headers.get('Authorization'))
   data = HomeActivities.run()
   return data, 200
 
