@@ -1,7 +1,8 @@
 #! /usr/bin/bash
-LABEL="db-schema-load"
 
-schema_path="$(realpath .)/db/schema.sql"
+LABEL="db-seed"
+
+seed_path="$(realpath .)/backend-flask/db/seed.sql"
 
 if [ "$1" = "prod" ]; then
   echo "Running in production mode"
@@ -10,4 +11,4 @@ else
   URL=$CONNECTION_URL
 fi
 
-psql $URL cruddur < $schema_path
+psql $URL cruddur < $seed_path
