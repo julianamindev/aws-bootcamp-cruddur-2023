@@ -47,7 +47,7 @@ export default function ConfirmationPage() {
       await Auth.confirmSignUp(email, code);
       window.location.href = "/"
     } catch (error) {
-      setCognitoErrors(error.message)
+      setErrors(error.message)
     }
     return false
   }
