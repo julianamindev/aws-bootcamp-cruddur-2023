@@ -2,7 +2,7 @@
 
 LABEL="db-seed"
 
-seed_path="$(realpath .)/backend-flask/db/seed.sql"
+seed_path="$(realpath .)/backend-flask/db/sql/seed.sql"
 
 if [ "$1" = "prod" ]; then
   echo "Running in production mode"

@@ -1,7 +1,7 @@
 #! /usr/bin/bash
 LABEL="db-schema-load"
 
-schema_path="$(realpath .)/backend-flask/db/schema.sql"
+schema_path="$(realpath .)/backend-flask/db/sql/schema.sql"
 # echo $schema_path
 if [ "$1" = "prod" ]; then
   echo "Running in production mode"
