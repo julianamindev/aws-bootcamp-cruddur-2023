@@ -14,10 +14,8 @@ class Db:
 
     template_path = os.path.join(*pathing)
 
-    green = '\033[92m'
-    no_color = '\033[0m'
     print("\n")
-    print(f'{green} Load SQL Template: {template_path} {no_color}')
+    print(f'Load SQL Template: {template_path}')
 
     with open(template_path, 'r') as f:
       template_content = f.read()
@@ -29,21 +27,18 @@ class Db:
   # we want to commit data such as an insert
   # be sure to check for RETURNING in all uppercases
   def print_params(self,params):
-    blue = '\033[94m'
-    no_color = '\033[0m'
-    print(f'{blue} SQL Params:{no_color}')
+    print(f'SQL Params:')
     for key, value in params.items():
       print(key, ":", value)
 
   def print_sql(self,title,sql,params={}):
-    cyan = '\033[96m'
-    no_color = '\033[0m'
-    print(f'{cyan} SQL STATEMENT-[{title}]------{no_color}')
+    print(f'SQL STATEMENT-[{title}]')
     print(sql,params)
   def query_commit(self,sql,params={}):
-    self.print_sql('commit with returning',sql,params)
+    self.print_sql('----commit with returning',sql,params)
 
     pattern = r"\bRETURNING\b"
+
     is_returning_id = re.search(pattern, sql)
 
     try:
